@@ -1,6 +1,7 @@
 new Vue({
     el: 'main',
     data: {
-        message: 'Hola mundo'
+        message: 'Hola mundo',
+        conectado: true
     }
 });

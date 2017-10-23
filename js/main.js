@@ -2,6 +2,10 @@ new Vue({
     el: 'main',
     data: {
         message: 'Hola mundo',
-        conectado: true
+        conectado: true,
+        dias: [
+            {name: 'Lunes'},
+            {name: 'Martes'}
+        ]
     }
 });

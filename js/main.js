@@ -1,4 +1,6 @@
-new Vue({
+Vue.config.devtools = true
+
+const vm = new Vue({
     el: 'main',
     data: {
         message: 'Hola mundo',

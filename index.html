@@ -19,6 +19,15 @@
                 {{ index }}: {{ dia.name }}
             </li>
         </ul>
+        <form v-on:submit.prevent="agregarTarea">
+            <input type="text" v-model="newTask">
+            <input type="submit" value="Agregar">
+        </form>
+        <ul>
+            <li v-for="(tarea, index) in tareas">
+                {{ index }}: {{ tarea }}
+            </li>
+        </ul>
     </main>
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
     <script src="js/main.js"></script>

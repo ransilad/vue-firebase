@@ -8,6 +8,18 @@ const vm = new Vue({
         dias: [
             {name: 'Lunes'},
             {name: 'Martes'}
+        ],
+        newTask: '',
+        tareas: [
+            'Apreder Vue',
+            'Aprender Flask',
+            'Aprender Linux'
         ]
+    },
+    methods: {
+        agregarTarea() {
+            this.tareas.unshift(this.newTask);
+            this.newTask = '';
+        }
     }
 });

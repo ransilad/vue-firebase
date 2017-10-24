@@ -1,35 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    <main>
-        <h1>{{ message }}</h1>
-        <input type="text" v-model="message">
-        <h2 v-show="conectado">Estoy Conectado</h2>
-        <template v-if="conectado">
-            <h1>Paso</h1>
-        </template>
-        <ul>
-            <li v-for="(dia, index) in dias">
-                {{ index }}: {{ dia.name }}
-            </li>
-        </ul>
-        <form v-on:submit.prevent="agregarTarea">
-            <input type="text" v-model="newTask">
-            <input type="submit" value="Agregar">
-        </form>
-        <ul>
-            <li v-for="(tarea, index) in tareas">
-                {{ index }}: {{ tarea }}
-            </li>
-        </ul>
-    </main>
-    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
-    <script src="js/main.js"></script>
-</body>
+  <head>
+    <meta charset="utf-8">
+    <title>vue-firebase-2</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script src="/dist/build.js"></script>
+  </body>
 </html>

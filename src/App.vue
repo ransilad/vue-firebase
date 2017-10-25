@@ -7,8 +7,14 @@
             <input type="submit" value="Agregar">
         </form>
         <ul>
-            <li v-for="(tarea, index) in tareas">
-                {{ index }}: {{ tarea }}
+            <li v-for="tarea in tareasPermitidas">
+                {{ tarea.titulo }}
+            </li>
+        </ul>
+        <br />
+        <ul>
+            <li v-for="tarea in tareasPorAntiguedad">
+                {{ tarea.titulo }}
             </li>
         </ul>
     </div>
@@ -22,9 +28,21 @@
                 msg: 'Welcome to Your Vue.js App',
                 newTask: '',
                 tareas: [
-                    'Apreder Vue',
-                    'Aprender Flask',
-                    'Aprender Linux'
+                    {
+                        titulo: 'Aprender Vue',
+                        prioridad: true,
+                        antiguedad: 133
+                    },
+                    {
+                        titulo: 'Aprender Flask',
+                        prioridad: true,
+                        antiguedad: 150
+                    },
+                    {
+                        titulo: 'Aprender Firebase',
+                        prioridad: false,
+                        antiguedad: 20
+                    }
                 ]
             }
         },
@@ -32,6 +50,14 @@
             agregarTarea() {
                 this.tareas.unshift(this.newTask);
                 this.newTask = '';
+            }
+        },
+        computed: {
+            tareasPermitidas() {
+                return this.tareas.filter((tarea) => tarea.prioridad);
+            },
+            tareasPorAntiguedad() {
+                return this.tareas.sort((a, b) => b.antiguedad - a.antiguedad);
             }
         }
     }

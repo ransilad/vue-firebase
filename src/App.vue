@@ -20,6 +20,7 @@
         data() {
             return {
                 msg: 'Welcome to Your Vue.js App',
+                newTask: '',
                 tareas: [
                     'Apreder Vue',
                     'Aprender Flask',

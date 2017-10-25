@@ -1,6 +1,5 @@
 <template>
     <div id="app">
-        <img src="./assets/logo.png">
         <h1>{{ msg }}</h1>
         <form v-on:submit.prevent="agregarTarea">
             <input type="text" v-model="newTask">
@@ -15,6 +14,22 @@
         <ul>
             <li v-for="tarea in tareasPorAntiguedad">
                 {{ tarea.titulo }}
+            </li>
+        </ul>
+        <br />
+        <input type="range" min="0" max="10" v-model="minimo">
+        <br />
+        <ul>
+            <li v-for="juego in mejoresJuegos">
+                {{ juego.titulo }}
+            </li>
+        </ul>
+        <br />
+        <input type="search" v-model="busqueda">
+        <br />
+        <ul>
+            <li v-for="juego in buscarJuego">
+                {{ juego.titulo }}
             </li>
         </ul>
     </div>
@@ -43,6 +58,25 @@
                         prioridad: false,
                         antiguedad: 20
                     }
+                ],
+                minimo: 2,
+                busqueda: '',
+                juegos: [
+                    {
+                        titulo: 'Titulo 1',
+                        genero: 'Genero 1',
+                        puntuacion: 10
+                    },
+                    {
+                        titulo: 'Titulo 2',
+                        genero: 'Genero 2',
+                        puntuacion: 7
+                    },
+                    {
+                        titulo: 'Titulo 3',
+                        genero: 'Genero 3',
+                        puntuacion: 2
+                    }
                 ]
             }
         },
@@ -58,6 +92,12 @@
             },
             tareasPorAntiguedad() {
                 return this.tareas.sort((a, b) => b.antiguedad - a.antiguedad);
+            },
+            mejoresJuegos() {
+                return this.juegos.filter((juego) => juego.puntuacion >= this.minimo);
+            },
+            buscarJuego() {
+                return this.juegos.filter((juego) => juego.titulo.includes(this.busqueda));
             }
         }
     }
@@ -79,12 +119,6 @@
 
     ul {
         list-style-type: none;
-        padding: 0;
-    }
-
-    li {
-        display: inline-block;
-        margin: 0 10px;
     }
 
     a {

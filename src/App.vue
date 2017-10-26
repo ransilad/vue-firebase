@@ -1,6 +1,18 @@
 <template>
     <div id="app">
-        <h1>{{ msg }}</h1>
+        <transition appear name="fade">
+            <h1 v-if="mostrar">{{ msg }}</h1>
+        </transition>
+        <br />
+        <!-- Animate.css -->
+        <transition appear
+                name="animate-css"
+                enter-active-class="animated rotateInUpLeft"
+                leave-active-class="animated zoomOutUp">
+            <h1 v-if="mostrar">{{ msg }}</h1>
+        </transition>
+        <br />
+        <button @click="mostrar = !mostrar;">Mostrar / Ocultar</button>
         <form v-on:submit.prevent="agregarTarea">
             <input type="text" v-model="newTask">
             <input type="submit" value="Agregar">
@@ -41,6 +53,7 @@
         data() {
             return {
                 msg: 'Welcome to Your Vue.js App',
+                mostrar: true,
                 newTask: '',
                 tareas: [
                     {
@@ -127,5 +140,12 @@
 
     .completado {
         text-decoration: line-through;
+    }
+
+    .fade-enter-active, .fade-leave-active {
+        transition: opacity 1s
+    }
+    .fade-enter, .fade-leave-to {
+        opacity: 0
     }
 </style>

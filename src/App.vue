@@ -12,7 +12,7 @@
         </ul>
         <br />
         <ul>
-            <li v-for="tarea in tareasPorAntiguedad">
+            <li v-bind:class="{completado: tarea.prioridad}" v-for="tarea in tareasPorAntiguedad">
                 {{ tarea.titulo }}
             </li>
         </ul>
@@ -82,7 +82,7 @@
         },
         methods: {
             agregarTarea() {
-                this.tareas.unshift(this.newTask);
+                this.tareas.push({titulo: this.newTask, prioridad: false, antiguedad: 100});
                 this.newTask = '';
             }
         },
@@ -123,5 +123,9 @@
 
     a {
         color: #42b983;
+    }
+
+    .completado {
+        text-decoration: line-through;
     }
 </style>

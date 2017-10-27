@@ -6,6 +6,8 @@
 </template>
 
 <script>
+    import axios from 'axios';
+
     export default {
         name: 'app',
         mounted() {
@@ -13,9 +15,9 @@
         },
         methods: {
             cargarPersonas() {
-                this.$http.get('https://randomuser.me/api/?results=500').then(response => {
+                axios.get('https://randomuser.me/api/?results=500').then(response => {
                     console.log(response);
-                    this.users = response.body.results;
+                    this.users = response.data.results;
                 });
             }
         },

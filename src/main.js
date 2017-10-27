@@ -5,9 +5,26 @@ import App from './App-modularizada.vue'
 // import VueResource from 'vue-resource'
 // Vue.use(VueResource);
 
+import axios from 'axios';
+
 Vue.component('mis-tareas', {
-    props: ['tareas'],
-    template: `<ul><li v-for="tarea in tareas" v-text="tarea.title"></li></ul>`
+    template: `<ul><li v-for="tarea in tareas" v-text="tarea.title"></li></ul>`,
+    mounted() {
+        this.cargarPersonas();
+    },
+    methods: {
+        cargarPersonas() {
+            axios.get('https://jsonplaceholder.typicode.com/todos').then(response => {
+                console.log(response);
+                this.tareas = response.data;
+            });
+        }
+    },
+    data() {
+        return {
+            tareas: []
+        }
+    }
 });
 
 new Vue({

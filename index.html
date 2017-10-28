@@ -20,9 +20,7 @@
             </slot>
         </header>
         <div class="contenido">
-            <slot>
-                Contendo del componente
-            </slot>
+            <slot v-for="tarea in tareas" :title="tarea.title"></slot>
         </div>
         <footer>
             <slot name="footer">

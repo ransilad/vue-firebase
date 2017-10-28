@@ -9,6 +9,7 @@ import App from './Slots.vue'
 // import axios from 'axios';
 
 Vue.component('slots-component', {
+    props: ['tareas'],
     template: '#slots'
 });
 

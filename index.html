@@ -7,6 +7,11 @@
 </head>
 <body>
 <div id="app"></div>
+<template id="plantilla">
+    <ul>
+        <li v-for="tarea in tareas" v-text="tarea.title"></li>
+    </ul>
+</template>
 <script src="/dist/build.js"></script>
 </body>
 </html>

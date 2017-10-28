@@ -12,6 +12,21 @@
         <li v-for="tarea in tareas" v-text="tarea.title"></li>
     </ul>
 </template>
+<template id="slots">
+    <section>
+        <header>
+            Este es el header
+        </header>
+        <div class="contenido">
+            <slot>
+                Contendo del componente
+            </slot>
+        </div>
+        <footer>
+            Este es el footer
+        </footer>
+    </section>
+</template>
 <script src="/dist/build.js"></script>
 </body>
 </html>

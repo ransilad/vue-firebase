@@ -18,6 +18,7 @@
             <slot name="header">
                 Este es el header
             </slot>
+            <a href="#" @click="ocultarWidget">Ocultar</a>
         </header>
         <div class="contenido">
             <slot v-for="tarea in tareas" :title="tarea.title"></slot>

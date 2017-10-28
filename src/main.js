@@ -10,7 +10,12 @@ import App from './Slots.vue'
 
 Vue.component('slots-component', {
     props: ['tareas'],
-    template: '#slots'
+    template: '#slots',
+    methods: {
+        ocultarWidget() {
+            this.$emit('ocultar');
+        }
+    }
 });
 
 new Vue({

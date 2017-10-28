@@ -15,7 +15,9 @@
 <template id="slots">
     <section>
         <header>
-            Este es el header
+            <slot name="header">
+                Este es el header
+            </slot>
         </header>
         <div class="contenido">
             <slot>
@@ -23,7 +25,9 @@
             </slot>
         </div>
         <footer>
-            Este es el footer
+            <slot name="footer">
+                Este es el footer
+            </slot>
         </footer>
     </section>
 </template>

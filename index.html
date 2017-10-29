@@ -4,31 +4,36 @@
     <meta charset="utf-8">
     <title>vue-firebase</title>
     <link rel="stylesheet" href="node_modules/animate.css/animate.css">
+    <link rel="stylesheet" href="src/assets/main.css">
 </head>
 <body>
-<div id="app"></div>
-<template id="plantilla">
-    <ul>
-        <li v-for="tarea in tareas" v-text="tarea.title"></li>
-    </ul>
+<main>
+    <users>
+        <h1>Usuarios de Voyhoy</h1>
+    </users>
+</main>
+
+<template id="users-template">
+    <div>
+        <section class="cabecera">
+            <slot></slot>
+            <input type="search" placeholder="Buscar contacto" v-model="query">
+        </section>
+        <hr>
+        <section class="usuarios">
+            <user :datos="user" v-for="user in filterUsers" :key="user.correo"></user>
+        </section>
+    </div>
 </template>
-<template id="slots">
-    <section>
-        <header>
-            <slot name="header">
-                Este es el header
-            </slot>
-            <a href="#" @click="ocultarWidget">Ocultar</a>
-        </header>
-        <div class="contenido">
-            <slot v-for="tarea in tareas" :title="tarea.title"></slot>
-        </div>
-        <footer>
-            <slot name="footer">
-                Este es el footer
-            </slot>
-        </footer>
-    </section>
+
+<template id="single-user">
+    <div class="usuario">
+        <img align="left" :src="datos.foto" :alt="datos.nombre">
+        <section>
+            <h1>{{datos.nombre}}</h1>
+            <small>{{datos.correo}}</small>
+        </section>
+    </div>
 </template>
 <script src="/dist/build.js"></script>
 </body>

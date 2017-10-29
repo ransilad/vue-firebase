@@ -1,24 +1,41 @@
 import Vue from 'vue'
-// import App from './App.vue'
-// import App from './App_vue_resource.vue'
-// import App from './App-modularizada.vue'
-// import VueResource from 'vue-resource'
-// Vue.use(VueResource);
-import App from './Slots.vue'
 
-// import axios from 'axios';
+import axios from 'axios';
 
-Vue.component('slots-component', {
-    props: ['tareas'],
-    template: '#slots',
-    methods: {
-        ocultarWidget() {
-            this.$emit('ocultar');
+Vue.component('users', {
+    template: '#users-template',
+    mounted() {
+        axios.get('https://randomuser.me/api/?results=500').then(response => {
+            this.users = response.data.results.map((usr) => {
+                return {
+                    nombre: usr.name.title + ' ' + usr.name.first,
+                    correo: usr.email,
+                    foto: usr.picture.medium
+                }
+            });;
+        });
+    },
+    data() {
+        return {
+            users: [],
+            query: ''
+        }
+    },
+    computed: {
+        filterUsers() {
+            return this.users.filter((user) => {
+                return user.nombre.includes(this.query);
+            });
         }
     }
 });
 
+Vue.component('user', {
+    props: ['datos'],
+    template: '#single-user'
+});
+
 new Vue({
-    el: '#app',
-    render: h => h(App) // Old: render: h => h(App)
+    el: 'main',
+    // render: h => h(App)
 });

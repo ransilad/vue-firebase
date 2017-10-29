@@ -7,34 +7,7 @@
     <link rel="stylesheet" href="src/assets/main.css">
 </head>
 <body>
-<main>
-    <users>
-        <h1>Usuarios de Voyhoy</h1>
-    </users>
-</main>
-
-<template id="users-template">
-    <div>
-        <section class="cabecera">
-            <slot></slot>
-            <input type="search" placeholder="Buscar contacto" v-model="query">
-        </section>
-        <hr>
-        <section class="usuarios">
-            <user :datos="user" v-for="user in filterUsers" :key="user.correo"></user>
-        </section>
-    </div>
-</template>
-
-<template id="single-user">
-    <div class="usuario">
-        <img align="left" :src="datos.foto" :alt="datos.nombre">
-        <section>
-            <h1>{{datos.nombre}}</h1>
-            <small>{{datos.correo}}</small>
-        </section>
-    </div>
-</template>
+<main></main>
 <script src="/dist/build.js"></script>
 </body>
 </html>

@@ -1,15 +1,14 @@
 <template>
-    <persona></persona>
+    <section>
+        <h1>Rutas con Vue Router</h1>
+        <router-link to="/">Home</router-link>
+        <router-link to="/contacto">Contacto</router-link>
+        <hr>
+        <router-view></router-view>
+    </section>
 </template>
 
 <script>
-    import persona from './components/Persona.vue';
     export default {
-        components: {
-            persona
-        },
-        data() {
-            return {}
-        }
     }
 </script>

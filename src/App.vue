@@ -3,7 +3,7 @@
         <h1>Rutas con Vue Router</h1>
         <router-link to="/">Home</router-link>
         <router-link to="/contacto">Contacto</router-link>
-        <router-link to="/usuario/ransilad">Usuario</router-link>
+        <router-link :to="{name: 'usuario', params: {username: 'ransilad'}}">Usuario</router-link>
         <hr>
         <router-view></router-view>
     </section>

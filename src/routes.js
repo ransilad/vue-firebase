@@ -5,5 +5,5 @@ import Usuario from './components/Usuario.vue';
 export const routes = [
     {path: '/', component: Home},
     {path: '/contacto', component: Contacto},
-    {path: '/usuario/:username', component: Usuario},
+    {path: '/usuario/:username', component: Usuario, name: 'usuario'},
 ];

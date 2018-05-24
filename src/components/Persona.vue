@@ -1,11 +1,13 @@
 <!-- Plantilla -->
 <template>
     <div>
-        <template v-if="persona">
-            <h1 v-text="datosPersona.nombre"></h1>
-            <img :src="datosPersona.foto">
+        <template v-if="persons">
+            <div v-for="person in persons">
+                <h1 v-text="person.data.destination"></h1>
+                <h5 v-text="person.data.duration"></h5>
+            </div>
         </template>
-        <span v-else="!persona">Cargando Persona</span>
+        <span v-else="!persons">Cargando Persona</span>
     </div>
 </template>
 
@@ -15,21 +17,14 @@
 
     export default {
         mounted() {
-            axios.get('https://randomuser.me/api/?results=500').then(response => {
-                this.persona = response.data.results[0];
+            axios.get('https://api.voyhoy.com/v3/tickets/data/?id=1522870349380-exkwvg').then(response => {
+                console.log(response.data);
+                this.persons = response.data;
             });
         },
         data() {
             return {
-                persona: null
-            }
-        },
-        computed: {
-            datosPersona() {
-                return {
-                    nombre: this.persona.name.first,
-                    foto: this.persona.picture.large
-                }
+                persons: null
             }
         }
     }
